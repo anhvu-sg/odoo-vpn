@@ -11,12 +11,6 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-class VpnProviderVpnGate1(models.Model):
-    _inherit = 'queue.job'
-
-    def write(self,vals):
-        print('ooo')
-        return super(VpnProviderVpnGate1, self).write(vals)
 class VpnProviderVpnGate(models.Model):
     _inherit = 'vpn.provider'
 
