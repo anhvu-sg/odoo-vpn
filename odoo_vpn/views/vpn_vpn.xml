@@ -5,8 +5,26 @@
         <field name="model">vpn.vpn</field>
         <field name="arch" type="xml">
             <tree string="VPN">
+                <button name="btn_download" type="object"
+                    class="fa fa-download" title="Download"/>
+                <field name="provider_id" invisible="1"/>
                 <field name="name"/>
+                <field name="ip" string="IP" widget="url"/>
+                <!-- <field name="ping" /> -->
+                <field name="speed" string="Speed (Mbps)"/>
+                <!-- <field name="country_long" /> -->
+                <field name="country_short" />
+                <!-- <field name="num_vpn_sessions" /> -->
+                <!-- <field name="uptime" /> -->
+                <!-- <field name="log_type" /> -->
+                <field name="operator" />
+                <!-- <field name="message" /> -->
+                <!-- <field name="openvpn_config_base64" /> -->
                 <field name="create_date"/>
+                <!-- <field name="total_user" /> -->
+                <field name="score" />
+                <field name="total_traffic" string="Total traffic (GB)"/>
+                <field name="active"/>
             </tree>
         </field>
     </record>
@@ -17,6 +35,9 @@
         <field name="arch" type="xml">
             <search string="VPN">
                 <field name="name"/>
+                <field name="ip"/>
+                <field name="country_long" />
+                <field name="country_short" />
             </search>
         </field>
     </record>
@@ -32,10 +53,23 @@
                     <div class="oe_button_box" name="button_box">
                     </div>
                     <group>
-                        <!-- <field name="name"/>
-                        <field name="posted_date"/>
-                        <field name="member"/> -->
-                        <field name="name" widget="url"/>
+                        <field name="provider_id"/>
+                        <field name="name"/>
+                        <field name="ip" string="IP" widget="url"/>
+                        <field name="score" />
+                        <field name="ping" />
+                        <field name="speed" string="Speed (Mbps)"/>
+                        <field name="country_long" />
+                        <field name="country_short" />
+                        <field name="num_vpn_sessions" />
+                        <field name="uptime" />
+                        <field name="total_user" />
+                        <field name="total_traffic" />
+                        <field name="log_type" />
+                        <field name="operator" />
+                        <field name="message" />
+                        <field name="active"/>
+                        <!-- <field name="openvpn_config_base64" /> -->
                     </group>
                 </sheet>
                 <div class="oe_chatter">
