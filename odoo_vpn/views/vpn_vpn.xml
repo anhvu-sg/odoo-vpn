@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_vpn_vpn_tree" model="ir.ui.view">
+        <field name="name">view.vpn.vpn.tree</field>
+        <field name="model">vpn.vpn</field>
+        <field name="arch" type="xml">
+            <tree string="VPN">
+                <button name="btn_download" type="object"
+                    class="fa fa-download" title="Download"/>
+                <field name="provider_id" invisible="1"/>
+                <field name="name"/>
+                <field name="ip" string="IP" widget="url"/>
+                <!-- <field name="ping" /> -->
+                <field name="speed" string="Speed (Mbps)"/>
+                <!-- <field name="country_long" /> -->
+                <field name="country_short" />
+                <!-- <field name="num_vpn_sessions" /> -->
+                <!-- <field name="uptime" /> -->
+                <!-- <field name="log_type" /> -->
+                <field name="operator" />
+                <!-- <field name="message" /> -->
+                <!-- <field name="openvpn_config_base64" /> -->
+                <field name="create_date"/>
+                <!-- <field name="total_user" /> -->
+                <field name="score" />
+                <field name="total_traffic" string="Total traffic (GB)"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_vpn_vpn_search" model="ir.ui.view">
+        <field name="name">view.vpn.vpn.search</field>
+        <field name="model">vpn.vpn</field>
+        <field name="arch" type="xml">
+            <search string="VPN">
+                <field name="name"/>
+                <field name="ip"/>
+                <field name="country_long" />
+                <field name="country_short" />
+            </search>
+        </field>
+    </record>
+
+    <record id="view_vpn_vpn_form" model="ir.ui.view">
+        <field name="name">view.vpn.vpn.form</field>
+        <field name="model">vpn.vpn</field>
+        <field name="arch" type="xml">
+            <form string="VPN">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                    </div>
+                    <group>
+                        <field name="provider_id"/>
+                        <field name="name"/>
+                        <field name="ip" string="IP" widget="url"/>
+                        <field name="score" />
+                        <field name="ping" />
+                        <field name="speed" string="Speed (Mbps)"/>
+                        <field name="country_long" />
+                        <field name="country_short" />
+                        <field name="num_vpn_sessions" />
+                        <field name="uptime" />
+                        <field name="total_user" />
+                        <field name="total_traffic" />
+                        <field name="log_type" />
+                        <field name="operator" />
+                        <field name="message" />
+                        <field name="active"/>
+                        <!-- <field name="openvpn_config_base64" /> -->
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_vpn_vpn" model="ir.actions.act_window">
+        <field name="name">VPN</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vpn.vpn</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_vpn_vpn_search"/>
+    </record>
+    <record id="action_vpn_vpn_form_view" model="ir.actions.act_window.view">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_vpn_vpn_form"/>
+        <field name="act_window_id" ref="action_vpn_vpn"/>
+    </record>
+    <record id="action_vpn_vpn_tree_view" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_vpn_vpn_tree"/>
+        <field name="act_window_id" ref="action_vpn_vpn"/>
+    </record>
+</odoo>

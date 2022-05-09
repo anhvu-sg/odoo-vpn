@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_vpn_provider_tree" model="ir.ui.view">
+        <field name="name">view.vpn.provider.tree</field>
+        <field name="model">vpn.provider</field>
+        <field name="arch" type="xml">
+            <tree string="VPN Provider">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="base_url" widget="url"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_vpn_provider_search" model="ir.ui.view">
+        <field name="name">view.vpn.provider.search</field>
+        <field name="model">vpn.provider</field>
+        <field name="arch" type="xml">
+            <search string="VPN Provider">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="base_url"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_vpn_provider_form" model="ir.ui.view">
+        <field name="name">view.vpn.provider.form</field>
+        <field name="model">vpn.provider</field>
+        <field name="arch" type="xml">
+            <form string="VPN Provider">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                    </div>
+                    <group>
+                        <!-- <field name="name"/>
+                        <field name="posted_date"/>
+                        <field name="member"/> -->
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="base_url" widget="url"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_vpn_provider" model="ir.actions.act_window">
+        <field name="name">VPN</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vpn.provider</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_vpn_provider_search"/>
+    </record>
+    <record id="action_vpn_provider_form_view" model="ir.actions.act_window.view">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_vpn_provider_form"/>
+        <field name="act_window_id" ref="action_vpn_provider"/>
+    </record>
+    <record id="action_vpn_provider_tree_view" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_vpn_provider_tree"/>
+        <field name="act_window_id" ref="action_vpn_provider"/>
+    </record>
+</odoo>

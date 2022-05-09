@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+    <record model="queue.job.channel" id="channel_vpn_collect_data">
+        <field name="name">channel_vpn_collect_data</field>
+        <field name="parent_id" ref="queue_job.channel_root"/>
+    </record>
+    <record model="queue.job.channel" id="channel_vpn_collect_data_vpngate">
+        <field name="name">channel_vpn_collect_data_vpngate</field>
+        <field name="parent_id" ref="odoo_vpn.channel_vpn_collect_data"/>
+    </record>
+</odoo>
