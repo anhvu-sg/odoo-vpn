@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="vpn_root_menu"
+        name="VPN"
+        web_icon="odoo_vpn,static/description/icon.png"
+        sequence="0"/>
+
+    <menuitem
+        id="vpn_vpn_menu"
+        name="VPN"
+        parent="vpn_root_menu"
+        sequence="5"/>
+
+        <menuitem
+            id="menu_action_vpn_vpn"
+            name="VPN"
+            action="action_vpn_vpn"
+            parent="vpn_vpn_menu"
+            sequence="5"/>
+
+        <menuitem
+            id="menu_action_vpn_provider"
+            name="VPN Provider"
+            action="action_vpn_provider"
+            parent="vpn_vpn_menu"
+            sequence="10"/>
+</odoo>

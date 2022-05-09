@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record model="vpn.provider" id="provider_vpngate">
+        <field name="name">VPNGate</field>
+        <field name="code">vpngate</field>
+        <field name="base_url">http://www.vpngate.net/api/iphone/</field>
+    </record>
+</odoo>

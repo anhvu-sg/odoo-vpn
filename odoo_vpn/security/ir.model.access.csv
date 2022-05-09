@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vpn_vpn,access_vpn_vpn,odoo_vpn.model_vpn_vpn,base.group_user,1,1,1,1
+access_vpn_provider,access_vpn_provider,odoo_vpn.model_vpn_provider,base.group_user,1,1,1,1
