@@ -31,8 +31,8 @@ class VpnProvider(models.Model):
             provider_code = provider_rec.code
             if provider_code:
                 if hasattr(self, 'queue_vpn_collect_data_%s' % provider_code):
-                    # getattr(self.with_delay(), 'queue_vpn_collect_data_%s' % provider_code)(provider_rec.id)
-                    getattr(self, 'queue_vpn_collect_data_%s' % provider_code)(provider_rec.id)
+                    getattr(self.with_delay(), 'queue_vpn_collect_data_%s' % provider_code)(provider_rec.id)
+                    # getattr(self, 'queue_vpn_collect_data_%s' % provider_code)(provider_rec.id)
         return True
 
     def _get_url(self, url):
