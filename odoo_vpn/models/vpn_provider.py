@@ -1,3 +1,4 @@
+from urllib import request
 
 import base64
 import requests
@@ -12,6 +13,7 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
+ERROR_MSG = "Method: {0} throw exception: {1} at: {2}"
 
 class VpnProvider(models.Model):
     _name = 'vpn.provider'
@@ -31,3 +33,18 @@ class VpnProvider(models.Model):
                 if hasattr(self, 'queue_vpn_collect_data_%s' % provider_code):
                     getattr(self.with_delay(), 'queue_vpn_collect_data_%s' % provider_code)(provider_rec.id)
         return True
+
+    def _get_url(self, url):
+        try:
+            req = request.Request(url)
+            with request.urlopen(req, timeout=8) as response:
+                if response.headers.get_content_charset() == None:
+                    encoding = 'utf-8'
+                else:
+                    encoding = response.headers.get_content_charset()
+                html = response.read().decode(encoding)
+            return html
+        except Exception as ex:
+            print(ERROR_MSG.format(
+                "_get_url", ex, datetime.now()))
+            return None
