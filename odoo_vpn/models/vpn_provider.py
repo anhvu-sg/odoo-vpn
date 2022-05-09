@@ -34,18 +34,3 @@ class VpnProvider(models.Model):
                     getattr(self.with_delay(), 'queue_vpn_collect_data_%s' % provider_code)(provider_rec.id)
                     # getattr(self, 'queue_vpn_collect_data_%s' % provider_code)(provider_rec.id)
         return True
-
-    def _get_url(self, url):
-        try:
-            req = request.Request(url)
-            with request.urlopen(req, timeout=8) as response:
-                if response.headers.get_content_charset() == None:
-                    encoding = 'utf-8'
-                else:
-                    encoding = response.headers.get_content_charset()
-                html = response.read().decode(encoding)
-            return html
-        except Exception as ex:
-            print(ERROR_MSG.format(
-                "_get_url", ex, datetime.now()))
-            return None
