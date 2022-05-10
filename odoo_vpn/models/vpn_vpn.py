@@ -54,3 +54,31 @@ class VpnVpn(models.Model):
     def cron_vpn_collect_data(self):
         self.env['vpn.provider'].vpn_collect_data()
         return True
+
+    def _api_get_free_vpn(self, kw):
+        res = {
+            'message': _('Success'),
+            'code': 200,
+            'data': []
+        }
+        param_env = self.env['ir.config_parameter'].sudo()
+        number_of_record = param_env.get_param('number_of_record', 10)
+        number_of_record = int(number_of_record)
+        if not kw:
+            sql = '''
+                SELECT id, speed, create_date
+                FROM vpn_vpn
+                WHERE
+                    id in (
+                        SELECT id
+                        FROM vpn_vpn
+                        WHERE active = 't'
+                        ORDER BY RANDOM()
+                        LIMIT {limit}
+                    )
+                ORDER BY speed DESC, create_date DESC
+            '''.format(limit=number_of_record)
+            self.env.cr.execute(sql)
+            data = self.env.cr.dictfetchall()
+            res['data'] = data
+        return res

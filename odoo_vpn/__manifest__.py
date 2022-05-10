@@ -10,6 +10,7 @@
     "contributors": [
     ],
     "depends": [
+        "auth_api_key",
         "base",
         "mail",
         "queue_job",
@@ -20,6 +21,7 @@
 
         # Data
         # 'data/demo.xml',
+        'data/ir_config_parameter_data.xml',
         'data/ir_cron_data.xml',
         'data/queue_job_channel_data.xml',
         'data/queue_job_function_data.xml',

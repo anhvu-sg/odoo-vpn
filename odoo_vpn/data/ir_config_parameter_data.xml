@@ -1,0 +1,6 @@
+<odoo noupdate="1">
+    <record id="number_of_record" model="ir.config_parameter">
+        <field name="key">number_of_record</field>
+        <field name="value">20</field>
+    </record>
+</odoo>
