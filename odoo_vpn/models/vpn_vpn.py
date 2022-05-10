@@ -66,7 +66,7 @@ class VpnVpn(models.Model):
         number_of_record = int(number_of_record)
         if not kw:
             sql = '''
-                SELECT id, speed, create_date
+                SELECT *
                 FROM vpn_vpn
                 WHERE
                     id in (

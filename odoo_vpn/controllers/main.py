@@ -19,7 +19,7 @@ _logger = logging.getLogger(__name__)
 class VpnController(Controller):
 
     @route('/api/v1/get_free_vpn',
-        type='json', auth='api_key', methods=['POST', 'OPTIONS'])
+        type='json', auth='api_key', methods=['POST', 'OPTIONS'], csrf=False)
     def api_get_free_vpn(self, **kw):
         _logger.info('Start api_get_free_vpn >>>\n%s' % kw)
         response = {}
